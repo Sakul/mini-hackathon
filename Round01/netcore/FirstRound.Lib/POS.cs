@@ -14,7 +14,11 @@ namespace FirstRound.Lib
                 double result = customerPayment - totalAmount;
                 double afterDot = result - (long)result;
 
-                if (afterDot > 1e-2 && afterDot <= 0.25)
+                if (afterDot > 0.76)
+                {
+                    result = (long)result + 1;
+                }
+                else if (afterDot > 0.01 && afterDot <= 0.25)
                 {
                     //25
                     result = (long)result + .25;
@@ -34,6 +38,19 @@ namespace FirstRound.Lib
                     //1
                     result = (long)result + 1;
                 }
+                else if (afterDot < 0.50 && afterDot > 0.25)
+                {
+                    result = (long)result + .50;
+                }
+                else if (afterDot == 0.75)
+                {
+                    result = (long)result + .50 + .25;
+                }
+                else if (afterDot == 0.75)
+                {
+                    result = (long)result + .50 + .25;
+                }
+
 
                 return Convert.ToInt32(result * 10 * 10);
             }
