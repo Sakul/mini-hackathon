@@ -15,7 +15,10 @@ namespace FirstRound.Lib.Tests
 
         [Theory]
         [InlineData(552, 1000, 44800)]
+        [InlineData(175.10, 1000, 32425)]
+        [InlineData(175.40, 1000, 32450)]
         [InlineData(175.30, 500, 32475)]
+        
         public void ComputeChangeInBahtAndSatangCorrectly(double amount, double payment, int expected)
         {
             var result = this.sut.ComputeChange(amount, payment);
@@ -45,6 +48,34 @@ namespace FirstRound.Lib.Tests
                         { BankNotesAndCoinsInSatang.Twenty, 2 },
                         { BankNotesAndCoinsInSatang.Five, 1 },
                         { BankNotesAndCoinsInSatang.One, 3 },
+                    },
+                },
+            },
+             new object[] { 32425,
+                new ChangeSolution
+                {
+                    HasChange = true,
+                    RoundedChange = 324.25,
+                    BankNotesAndCoins = new Dictionary<BankNotesAndCoinsInSatang, int>
+                    {
+                        { BankNotesAndCoinsInSatang.Hundred, 3 },
+                        { BankNotesAndCoinsInSatang.Twenty, 1 },
+                        { BankNotesAndCoinsInSatang.One, 4 },
+                        { BankNotesAndCoinsInSatang.TwentyFifth, 1 },
+                    },
+                },
+            },
+             new object[] { 32450,
+                new ChangeSolution
+                {
+                    HasChange = true,
+                    RoundedChange = 324.50,
+                    BankNotesAndCoins = new Dictionary<BankNotesAndCoinsInSatang, int>
+                    {
+                        { BankNotesAndCoinsInSatang.Hundred, 3 },
+                        { BankNotesAndCoinsInSatang.Twenty, 1 },
+                        { BankNotesAndCoinsInSatang.One, 4 },
+                        { BankNotesAndCoinsInSatang.Fiftieth, 1 },
                     },
                 },
             },
