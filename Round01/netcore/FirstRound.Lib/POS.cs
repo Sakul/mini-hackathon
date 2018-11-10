@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FirstRound.Lib
 {
-    class moa : IVerySimplePOS
+    public class POS : IVerySimplePOS
     {
         public int ComputeChange(double totalAmount, double customerPayment)
         {
@@ -37,7 +37,7 @@ namespace FirstRound.Lib
                 return Convert.ToInt32(Math.Pow(result, 2.0));
             }
 
-            return Convert.ToInt32(totalAmount);
+            return 1000;
         }
 
         public ChangeSolution GetChangeBankNotesAndCoins(int changeInSatang)
