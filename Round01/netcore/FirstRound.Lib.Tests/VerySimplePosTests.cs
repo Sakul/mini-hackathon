@@ -11,7 +11,6 @@ namespace FirstRound.Lib.Tests
 
         public VerySimplePosTests()
         {
-            // TODO: instantiate SUT with your implementation of IVerySimplePOS.
             sut = new POS();
         }
 
