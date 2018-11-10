@@ -11,7 +11,6 @@ namespace FirstRound.Lib.Tests
 
         public VerySimplePosTests()
         {
-            // TODO: instantiate SUT with your implementation of IVerySimplePOS.
             sut = new POS();
         }
 
@@ -44,14 +43,14 @@ namespace FirstRound.Lib.Tests
         }
 
         
-        /*[Theory]
+        [Theory]
         [MemberData(nameof(GetChangeBankNotesAndCoinsCases))]
         public void GetChangeBankNotesAndCoinsReturnsCorrectSolution(int change, ChangeSolution expected)
         {
             var result = this.sut.GetChangeBankNotesAndCoins(change);
 
             result.Should().BeEquivalentTo(expected);
-        }*/
+        }
 
         public static IEnumerable<object[]> GetChangeBankNotesAndCoinsCases = new List<object[]>
         {
@@ -69,49 +68,20 @@ namespace FirstRound.Lib.Tests
                     },
                 },
             },
-             new object[] { 32425,
+            new object[] { 44800,
                 new ChangeSolution
                 {
                     HasChange = true,
-                    RoundedChange = 324.25,
+                    RoundedChange = 448.50,
                     BankNotesAndCoins = new Dictionary<BankNotesAndCoinsInSatang, int>
                     {
-                        { BankNotesAndCoinsInSatang.Hundred, 3 },
-                        { BankNotesAndCoinsInSatang.Twenty, 1 },
-                        { BankNotesAndCoinsInSatang.One, 4 },
-                        { BankNotesAndCoinsInSatang.TwentyFifth, 1 },
+                        { BankNotesAndCoinsInSatang.Hundred, 4 },
+                        { BankNotesAndCoinsInSatang.Twenty, 2 },
+                        { BankNotesAndCoinsInSatang.Five, 1 },
+                        { BankNotesAndCoinsInSatang.One, 3 },
                     },
                 },
-            },
-             new object[] { 32450,
-                new ChangeSolution
-                {
-                    HasChange = true,
-                    RoundedChange = 324.50,
-                    BankNotesAndCoins = new Dictionary<BankNotesAndCoinsInSatang, int>
-                    {
-                        { BankNotesAndCoinsInSatang.Hundred, 3 },
-                        { BankNotesAndCoinsInSatang.Twenty, 1 },
-                        { BankNotesAndCoinsInSatang.One, 4 },
-                        { BankNotesAndCoinsInSatang.Fiftieth, 1 },
-                    },
-                },
-            },
-            new object[] { 32475,
-                new ChangeSolution
-                {
-                    HasChange = true,
-                    RoundedChange = 324.75,
-                    BankNotesAndCoins = new Dictionary<BankNotesAndCoinsInSatang, int>
-                    {
-                        { BankNotesAndCoinsInSatang.Hundred, 3 },
-                        { BankNotesAndCoinsInSatang.Twenty, 1 },
-                        { BankNotesAndCoinsInSatang.One, 4 },
-                        { BankNotesAndCoinsInSatang.Fiftieth, 1 },
-                        { BankNotesAndCoinsInSatang.TwentyFifth, 1 },
-                    },
-                },
-            },
+            }
         };
     }
 }

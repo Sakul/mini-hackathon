@@ -58,9 +58,100 @@ namespace FirstRound.Lib
             return Convert.ToInt32(customerPayment);
         }
 
+        public int GetBanks(int amount, int baseAmount)
+        {
+            return amount / baseAmount;
+        }
+
+        public int GetCoins(int amount, int baseAmount)
+        {
+            return amount / baseAmount;
+        }
+
         public ChangeSolution GetChangeBankNotesAndCoins(int changeInSatang)
         {
-            throw new NotImplementedException();
+            ChangeSolution change = new ChangeSolution();
+            change.BankNotesAndCoins = new Dictionary<BankNotesAndCoinsInSatang, int>();
+
+            change.RoundedChange = Convert.ToDouble(changeInSatang) / 100;
+            changeInSatang /= 100;
+            change.HasChange = true;
+
+            double afterDot = change.RoundedChange - (long)change.RoundedChange;
+            int dotValues = Convert.ToInt32(afterDot) * 100;
+
+            int thousand = GetBanks(changeInSatang, 1000);
+            changeInSatang -= 1000 * thousand;
+            int fiveHundred = GetBanks(changeInSatang, 500);
+            changeInSatang -= 500 * fiveHundred;
+            int hundred = GetBanks(changeInSatang, 100);
+            changeInSatang -= 100 * hundred;
+            int fifty = GetBanks(changeInSatang, 50);
+            changeInSatang -= 50 * fifty;
+            int twenty = GetBanks(changeInSatang, 20);
+            changeInSatang -= 20 * twenty;
+            int ten = GetBanks(changeInSatang, 10);
+            changeInSatang -= 10 * ten;
+            int five = GetBanks(changeInSatang, 5);
+            changeInSatang -= 5 * five;
+            int one = changeInSatang;
+
+            int twentyFifth = GetCoins(dotValues, 50);
+            dotValues -= 50 * twentyFifth;
+            int fiftieth = GetCoins(dotValues, 25);
+            dotValues -= 25 * fiftieth;
+            
+            if (thousand > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Thousand, thousand);
+            }
+
+            if (fiveHundred > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.FiveHundreds, fiveHundred);
+            }
+
+            if (hundred > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Hundred, hundred);
+            }
+
+            if (fifty > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Fifty, fifty);
+            }
+
+            if (twenty > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Twenty, twenty);
+            }
+
+            if (ten > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Ten, ten);
+            }
+
+            if (five > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Five, five);
+            }
+
+            if (one > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.One, one);
+            }
+
+            if (fiftieth > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Fiftieth, fiftieth);
+            }
+
+            if (twentyFifth > 0)
+            {
+                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.TwentyFifth, twentyFifth);
+            }
+
+            return change;
         }
     }
 }
