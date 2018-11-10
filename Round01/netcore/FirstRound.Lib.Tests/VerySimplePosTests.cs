@@ -17,12 +17,33 @@ namespace FirstRound.Lib.Tests
 
         [Theory]
         [InlineData(500, 1000, 50000)]
+        [InlineData(650, 1000, 35000)]
+        [InlineData(990, 1000, 1000)]
+        [InlineData(995, 1000, 500)]
+        [InlineData(999, 1000, 100)]
+        [InlineData(175.30, 500, 32475)]
+
         public void ComputeChangeInBahtAndSatangCorrectly(double amount, double payment, int expected)
         {
             var result = this.sut.ComputeChange(amount, payment);
             result.Should().Be(expected);
         }
 
+        [Theory]
+        [InlineData(100.25, 101, 75)]
+        [InlineData(100.26, 101, 75)]
+        [InlineData(100.70,101,50)]
+        [InlineData(100.20,101,100)]
+        [InlineData(100.60, 101, 50)]
+        [InlineData(100.80, 101, 25)]
+
+        public void ComputeRoundUpChangeInBahtAndSatangCorrectly(double amount, double payment, int expected)
+        {
+            var result = this.sut.ComputeChange(amount, payment);
+            result.Should().Be(expected);
+        }
+
+        
         /*[Theory]
         [MemberData(nameof(GetChangeBankNotesAndCoinsCases))]
         public void GetChangeBankNotesAndCoinsReturnsCorrectSolution(int change, ChangeSolution expected)
