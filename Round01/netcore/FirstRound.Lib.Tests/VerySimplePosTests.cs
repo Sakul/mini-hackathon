@@ -20,6 +20,7 @@ namespace FirstRound.Lib.Tests
         [InlineData(990, 1000, 1000)]
         [InlineData(995, 1000, 500)]
         [InlineData(999, 1000, 100)]
+        [InlineData(1000, 1000, 0)]
         [InlineData(175.30, 500, 32475)]
 
         public void ComputeChangeInBahtAndSatangCorrectly(double amount, double payment, int expected)
@@ -72,7 +73,7 @@ namespace FirstRound.Lib.Tests
                 new ChangeSolution
                 {
                     HasChange = true,
-                    RoundedChange = 448.50,
+                    RoundedChange = 448.00,
                     BankNotesAndCoins = new Dictionary<BankNotesAndCoinsInSatang, int>
                     {
                         { BankNotesAndCoinsInSatang.Hundred, 4 },
