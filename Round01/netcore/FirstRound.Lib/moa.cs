@@ -7,9 +7,7 @@ namespace FirstRound.Lib
     class moa : IVerySimplePOS
     {
         public int ComputeChange(double totalAmount, double customerPayment)
-        {
-<<<<<<< HEAD
-           
+        {  
 
             if (totalAmount <= customerPayment)
             {

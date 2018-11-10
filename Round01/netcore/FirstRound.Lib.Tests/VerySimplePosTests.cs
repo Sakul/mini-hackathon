@@ -15,8 +15,8 @@ namespace FirstRound.Lib.Tests
         }
 
         [Theory]
-        [InlineData(5521, 1000, 1000)]
-        [InlineData(1751.10, 1000, 1000)]
+        [InlineData(500, 1000, 500)]
+       // [InlineData(1751.10, 1000, 1000)]
         public void ComputeChangeInBahtAndSatangCorrectly(double amount, double payment, int expected)
         {
             var result = this.sut.ComputeChange(amount, payment);
