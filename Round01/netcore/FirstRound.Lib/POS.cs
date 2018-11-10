@@ -11,7 +11,7 @@ namespace FirstRound.Lib
 
             if (totalAmount <= customerPayment)
             {
-                double result = totalAmount - customerPayment;
+                double result = customerPayment - totalAmount;
                 double afterDot = result - (long)result;
 
                 if (afterDot > 1e-2 && afterDot <= 0.25)
@@ -35,11 +35,10 @@ namespace FirstRound.Lib
                     result = (long)result + 1;
                 }
 
->>>>>>> rn0z
-                return Convert.ToInt32(Math.Pow(result, 2.0));
+                return Convert.ToInt32(result * 10 * 10);
             }
 
-            return 1000;
+            return Convert.ToInt32(customerPayment);
         }
 
         public ChangeSolution GetChangeBankNotesAndCoins(int changeInSatang)
