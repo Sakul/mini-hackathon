@@ -8,31 +8,32 @@ namespace FirstRound.Lib
     {
         public int ComputeChange(double totalAmount, double customerPayment)
         {
-            double result = totalAmount - customerPayment;
-            double afterDot = result - (long)result;
-            //0.34 < 0.01  25 -> 25
-            //0.34 < 0.25, 25 -> 50
-            //0.34 < 0.50, 51 -> 75
-            //0.51 < 0.75, 76 -> 1;
-            if (afterDot < 1e-2)
-            {
-
-            }
-            else if (afterDot < .25)
-            {
-
-            }
-            else if (afterDot < .50)
-            {
-
-            }
-            else if (afterDot < .75)
-            {
-
-            }
-
             if (totalAmount <= customerPayment)
             {
+                double result = totalAmount - customerPayment;
+                double afterDot = result - (long)result;
+
+                if (afterDot > 1e-2 && afterDot <= 0.25)
+                {
+                    //25
+                    result = (long)result + .25;
+                }
+                else if (afterDot > 0.25 && afterDot <= 0.50)
+                {
+                    //50
+                    result = (long)result + .50;
+                }
+                else if (afterDot > 0.50 && afterDot <= 0.75)
+                {
+                    //75
+                    result = (long)result + 0.75;
+                }
+                else if (afterDot > 0.75 && afterDot <= 0.99)
+                {
+                    //1
+                    result = (long)result + 1;
+                }
+
                 return Convert.ToInt32(Math.Pow(result, 2.0));
             }
 
