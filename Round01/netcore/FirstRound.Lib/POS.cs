@@ -78,7 +78,6 @@ namespace FirstRound.Lib
             change.HasChange = true;
 
             double afterDot = change.RoundedChange - (long)change.RoundedChange;
-            int dotValues = Convert.ToInt32(afterDot) * 100;
 
             int thousand = GetBanks(changeInSatang, 1000);
             changeInSatang -= 1000 * thousand;
@@ -96,11 +95,6 @@ namespace FirstRound.Lib
             changeInSatang -= 5 * five;
             int one = changeInSatang;
 
-            int twentyFifth = GetCoins(dotValues, 50);
-            dotValues -= 50 * twentyFifth;
-            int fiftieth = GetCoins(dotValues, 25);
-            dotValues -= 25 * fiftieth;
-            
             if (thousand > 0)
             {
                 change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Thousand, thousand);
@@ -139,16 +133,6 @@ namespace FirstRound.Lib
             if (one > 0)
             {
                 change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.One, one);
-            }
-
-            if (fiftieth > 0)
-            {
-                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.Fiftieth, fiftieth);
-            }
-
-            if (twentyFifth > 0)
-            {
-                change.BankNotesAndCoins.Add(BankNotesAndCoinsInSatang.TwentyFifth, twentyFifth);
             }
 
             return change;
